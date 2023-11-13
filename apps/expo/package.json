@@ -1,5 +1,5 @@
 {
-    "name": "@acme/expo",
+    "name": "@smartfork/expo",
     "version": "0.1.0",
     "main": "index.tsx",
     "scripts": {
@@ -34,9 +34,9 @@
         "react-native-web": "~0.18.10"
     },
     "devDependencies": {
-        "@acme/api": "*",
-        "@acme/eslint-config": "*",
-        "@acme/tailwind-config": "*",
+        "@smartfork/api": "*",
+        "@smartfork/eslint-config": "*",
+        "@smartfork/tailwind-config": "*",
         "@babel/core": "^7.19.3",
         "@babel/preset-env": "^7.19.3",
         "@babel/runtime": "^7.19.0",
