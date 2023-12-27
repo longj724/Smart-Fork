@@ -19,6 +19,7 @@
     "zod": "^3.18.0"
   },
   "devDependencies": {
+    "@clerk/types": "^3.60.0",
     "eslint": "^8.28.0",
     "typescript": "^4.9.3"
   }
