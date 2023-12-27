@@ -243,6 +243,9 @@ importers:
       '@trpc/server':
         specifier: ^10.1.0
         version: 10.5.0
+      '@types/webpack-env':
+        specifier: ^1.18.4
+        version: 1.18.4
       superjson:
         specifier: ^1.9.1
         version: 1.12.0
@@ -3660,6 +3663,10 @@ packages:
     resolution: {integrity: sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q==}
     dependencies:
       '@types/node': 18.15.11
+    dev: false
+
+  /@types/webpack-env@1.18.4:
+    resolution: {integrity: sha512-I6e+9+HtWADAWeeJWDFQtdk4EVSAbj6Rtz4q8fJ7mSr1M0jzlFcs8/HZ+Xb5SHzVm1dxH7aUiI+A8kA8Gcrm0A==}
     dev: false
 
   /@types/ws@8.5.10:

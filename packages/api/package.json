@@ -13,6 +13,7 @@
     "@smartfork/db": "*",
     "@trpc/client": "^10.1.0",
     "@trpc/server": "^10.1.0",
+    "@types/webpack-env": "^1.18.4",
     "superjson": "^1.9.1",
     "webpack-env": "^0.8.0",
     "zod": "^3.18.0"
