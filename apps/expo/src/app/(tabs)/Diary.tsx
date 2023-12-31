@@ -96,6 +96,7 @@ const Page = () => {
           date={sampleData.date}
           notes={sampleData.notes}
           type={sampleData.type}
+          imageLink="https://picsum.photos/200/300"
         />
       </View>
     </SafeAreaView>

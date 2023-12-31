@@ -5,8 +5,10 @@ import {
   TextLayoutEventData,
   NativeSyntheticEvent,
   Pressable,
+  Image,
+  LayoutChangeEvent,
 } from "react-native";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface MealProps {
   type?: string;
@@ -15,14 +17,18 @@ interface MealProps {
   imageLink?: string;
 }
 
+interface ImageSize {
+  width: number;
+  height: number;
+}
+
 const Meal = ({ type, notes, date, imageLink }: MealProps) => {
   const [showReadMore, setShowReadMore] = useState<boolean | undefined>(
     undefined,
   );
   const [showReadLess, setShowReadLess] = useState(false);
   const [numberOfLines, setNumberOfLines] = useState<number | null>(null);
-  const notesContainerRef = useRef(null);
-  const notesRef = useRef(null);
+  const [imageSize, setImageSize] = useState<ImageSize | null>(null);
 
   const getMealTime = () => {
     let hours = date.getHours();
@@ -61,6 +67,13 @@ const Meal = ({ type, notes, date, imageLink }: MealProps) => {
     setShowReadMore(true);
   };
 
+  const onImageLayout = (event: LayoutChangeEvent) => {
+    if (!imageSize && showReadMore !== undefined) {
+      const { width, height } = event.nativeEvent.layout;
+      setImageSize({ width, height });
+    }
+  };
+
   return (
     <View className="flex flex-row rounded-lg bg-white shadow-md">
       <View className="w-4/6 flex-col p-2">
@@ -69,27 +82,41 @@ const Meal = ({ type, notes, date, imageLink }: MealProps) => {
             {getMealTime()} - {type}
           </Text>
         </View>
-        <View className="ml-3 mt-2 flex flex-col" ref={notesContainerRef}>
+        <View className="ml-3 mt-2 flex flex-col">
           <Text
             numberOfLines={numberOfLines !== null ? numberOfLines : undefined}
             ellipsizeMode="tail"
-            ref={notesRef}
             onTextLayout={onNotesTextLayout}
           >
             {notes}
           </Text>
           {showReadMore && (
-            <Pressable onPress={onShowReadMore} className="mt-1">
-              <Text className="font-semibold">Read more...</Text>
+            <Pressable onPress={onShowReadMore} className="mt-2">
+              <Text className="font-semibold">Read more</Text>
             </Pressable>
           )}
           {showReadLess && (
-            <Pressable onPress={onShowReadLess} className="mt-1">
+            <Pressable onPress={onShowReadLess} className="mt-2">
               <Text className="font-semibold">Read less</Text>
             </Pressable>
           )}
         </View>
       </View>
+      {imageLink !== undefined && (
+        <View className="flex flex-1 items-center p-4">
+          <Image
+            source={{ uri: imageLink }}
+            className="h-20 w-20 rounded-sm"
+            // style={
+            //   imageSize
+            //     ? { width: imageSize.width, height: imageSize.height }
+            //     : { flex: 1 }
+            // }
+            resizeMode="cover"
+            onLayout={onImageLayout}
+          />
+        </View>
+      )}
     </View>
   );
 };
