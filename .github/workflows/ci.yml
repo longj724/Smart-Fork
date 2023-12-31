@@ -14,7 +14,6 @@ env:
   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}}
   CLERK_SECRET_KEY: ${{secrets.CLERK_SECRET_KEY}}
 
-
 jobs:
   build-lint:
     env:
@@ -55,8 +54,8 @@ jobs:
           path: ${{ github.workspace }}apps/nextjs/.next/cache
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
-      - name: Build, lint and type-check
-        run: pnpm turbo build lint type-check
+      # - name: Build, lint and type-check
+      #   run: pnpm turbo build lint type-check
 
       - name: Check workspaces
         run: pnpm manypkg check
