@@ -12,6 +12,7 @@ const config = {
       "./packages/*/tsconfig.json",
     ],
   },
+  ignorePatterns: ["index.ts", "index.tsx"], // Eslint was having problems with these files for some reason
   settings: {
     next: {
       rootDir: ["apps/nextjs"],
